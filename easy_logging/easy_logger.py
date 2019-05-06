@@ -2,7 +2,6 @@ import logging
 import time
 from os.path import join
 import os
-from functools import wraps
 
 
 class _EasyLogging:
@@ -49,30 +48,3 @@ def log(function=None, config=None):
             return _EasyLogging(function, config)
         return wrapper
 
-
-config = {
-    "FILE_NAME": "./user/test.log",
-    "APP_CODE":"test"
-}
-
-@log(config=config)
-def function_name(name, message='Hello'):
-    #print(1/0)
-    print("{}, {}".format(message, name))
-
-function_name("Ganesh")
-@log
-def test1():
-    time.sleep(10)
-
-@log
-def test2():
-    time.sleep(20)
-@log
-def test3():
-    time.sleep(15)
-
-
-test1()
-test2()
-test3()
